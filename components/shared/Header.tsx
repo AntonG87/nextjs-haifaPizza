@@ -1,10 +1,11 @@
 import React from 'react';
 import {cn} from "@/lib/utils";
-import {Container} from "@/components/shared";
+import {Container, SearchInput} from "@/components/shared";
 import Image from 'next/image'
 import {Button} from "@/components/ui";
 import {ArrowRight, User} from 'lucide-react';
 import {ShoppingCart} from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   className: string;
@@ -16,6 +17,7 @@ export const Header: React.FC<Props> = ({ className }) => {
       <Container className='flex items-center justify-between '>
 
         {/*Левая часть*/}
+        <Link href={'/'}>
         <div className='flex items-center gap-4'>
           <Image src='/logo.png' alt='Logo' width={80} height={80}/>
           <div className=''>
@@ -23,6 +25,13 @@ export const Header: React.FC<Props> = ({ className }) => {
             <p className='text-sm text-gray-400 leading-3'>Indulge in The Best Taste of Pizza</p>
           </div>
         </div>
+        </Link>
+
+        {/*центральная часть*/}
+        <div className='mx-10 flex-1'>
+          <SearchInput />
+        </div>
+
 
         {/*Правая часть*/}
         <div className='flex items-center gap-3'>

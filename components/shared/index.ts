@@ -6,3 +6,4 @@ export {SortPopup} from './sort-popup'
 export {TopBar} from './top-bar'
 export {Filters} from './Filters'
 export {FilterCheckbox} from "./filter-checkbox";
+export {SearchInput} from "./Search";
