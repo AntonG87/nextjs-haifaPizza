@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import {Title} from "@/components/shared/";
 import {FilterCheckbox} from "@/components/shared/";
@@ -6,14 +8,20 @@ import { RangeSlider } from '../ui/range-slider';
 import {
   CheckboxFiltersGroup
 } from "@/components/shared/checkbox-filters-group";
-
+import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 
 interface Props {
   className: string;
 }
 
 
+
 export const Filters: React.FC<Props> = ({ className }) => {
+  const {ingredients,loading,onAddId,selectedIds} = useFilterIngredients();
+
+
+const ingredientsItems = ingredients.map((item) =>
+  ({text: item.name, value: String(item.id)}));
 
   return (
     <div className={className}>
@@ -33,81 +41,11 @@ export const Filters: React.FC<Props> = ({ className }) => {
           <RangeSlider min={0} max={300} step={10} value={[0,300]}></RangeSlider>
       </div>
       <CheckboxFiltersGroup title={'Ingredients:'} className='mt-5' limit={6}
-                            defaultItems={[{
-                              text: 'Cheese sauce',
-                              value: '1',
-                            },
-                              {
-                                text: 'Mozzarella',
-                                value: '2',
-                              },
-                              {
-                                text: 'Garlic',
-                                value: '3',
-                              },
-                              {
-                                text: 'Pickles',
-                                value: '4',
-                              },
-                              {
-                                text: 'Red onion',
-                                value: '5',
-                              },
-                              {
-                                text: 'Tomatoes',
-                                value: '6',
-                              },
-                            ]}
-                            items={[
-                              {
-                                text: 'Cheese sauce',
-                                value: '7',
-                              },
-                              {
-                                text: 'Mozzarella',
-                                value: '8',
-                              },
-                              {
-                                text: 'Garlic',
-                                value: '9',
-                              },
-                              {
-                                text: 'Pickles',
-                                value: '10',
-                              },
-                              {
-                                text: 'Red onion',
-                                value: '11',
-                              },
-                              {
-                                text: 'Tomatoes',
-                                value: '12',
-                              },
-                              {
-                                text: 'Cheese sauce',
-                                value: '13',
-                              },
-                              {
-                                text: 'Mozzarella',
-                                value: '14',
-                              },
-                              {
-                                text: 'Garlic',
-                                value: '15',
-                              },
-                              {
-                                text: 'Pickles',
-                                value: '16',
-                              },
-                              {
-                                text: 'Red onion',
-                                value: '17',
-                              },
-                              {
-                                text: 'Tomatoes',
-                                value: '18',
-                              },
-                            ]}
+                            defaultItems={ingredientsItems.slice(0,6)}
+                            items={ingredientsItems}
+                            loading={loading}
+                            onClickCheckbox={onAddId}
+                            selectedIds={selectedIds}
      />
     </div>
   );
