@@ -28,8 +28,8 @@ const ingredientsItems = ingredients.map((item) =>
       <Title  text='Product Filtering' size='sm' className='mb-5 font-bold'/>
       {/*checkbox*/}
       <div className='flex flex-col gap-4'>
-        <FilterCheckbox text='Сan be collected' value='1'/>
-        <FilterCheckbox text='Novelty' value='1'/>
+        <FilterCheckbox text='Сan be collected' name={'0'} value='1'/>
+        <FilterCheckbox text='Novelty' name={'1'} value='1'/>
       </div>
       {/*price sllider and price input*/}
       <div className='mt-5 border-y border-y-neutral-100 py-6 pb-7'>
