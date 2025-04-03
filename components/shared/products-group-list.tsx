@@ -34,16 +34,19 @@ export const ProductGroupList: React.FC<Props> = ({
     }
   },[categoryId,intersection?.isIntersecting,title])
   return (
-    <div className={className} id={title} ref={intersectionRef}>
+    <div className={cn('scroll-mt-[157px]', className)}
+         id={title}
+         ref={intersectionRef}>
       <Title text={title} size={'lg'} className='font-extrabold mb-5' />
       <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
-        {items.map((item) => (
+        {items.map((product, i) => (
           <ProductCart
-            key={item.id}
-            name={item.name} // Consider if this should be item.name or another property from item
-            imageUrl={item.imageUrl}
-            price={item.price}
-            id={item.id}
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            imageUrl={product.imageUrl}
+            price={product.items[0].price}
+
           />
         ))}
       </div>
