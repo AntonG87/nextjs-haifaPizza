@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
-import {Container, Filters,Title,TopBar} from "@/components/shared";
-import {ProductGroupList} from "@/components/shared/products-group-list";
+import {Container, Filters,Title,TopBar,ProductGroupList} from "@/shared/components/shared";
+
 import {prisma} from "@/prisma/prisma-client";
 
 export const metadata: Metadata = {
